@@ -12,6 +12,8 @@ class NewNotePage extends StatefulWidget {
 }
 
 class _NewNotePageState extends State<NewNotePage> {
+  final titleController = TextEditingController();
+  final contentController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,12 +31,6 @@ class _NewNotePageState extends State<NewNotePage> {
           IconButton(
               onPressed: () {
                 Navigator.pop(context);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(duration: Duration(seconds: 3),
-                    content: Text("Note added!"),
-                    behavior: SnackBarBehavior.floating,
-                  ),
-                );
               },
               icon: Icon(Icons.done))
         ],
@@ -45,11 +41,13 @@ class _NewNotePageState extends State<NewNotePage> {
           child: Column(
             children: [
               MyNoteFields(
+                controller: titleController,
                 hintText: 'Title',
                 hintStyle: TextStyle(fontSize: 35),
                 textStyle: TextStyle(fontSize: 35),
               ),
               MyNoteFields(
+                controller: contentController,
                 hintText: 'Content',
                 hintStyle: TextStyle(fontSize: 20),
                 textStyle: TextStyle(fontSize: 20),

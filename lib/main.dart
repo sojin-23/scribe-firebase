@@ -19,10 +19,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
-        textTheme: ThemeData.dark().textTheme.apply(fontFamily: "Open Sans"),
-        scaffoldBackgroundColor: Pallete.backgroundColor,
-        appBarTheme: AppBarTheme(backgroundColor: Pallete.tertiaryColors),
-      ),
+          textTheme: ThemeData.dark().textTheme.apply(fontFamily: "Open Sans"),
+          scaffoldBackgroundColor: Pallete.backgroundColor,
+          appBarTheme: AppBarTheme(backgroundColor: Pallete.tertiaryColors),
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          hoverColor: Colors.transparent,
+          splashFactory: NoSplash.splashFactory),
       home: SplashPage(),
     );
   }
