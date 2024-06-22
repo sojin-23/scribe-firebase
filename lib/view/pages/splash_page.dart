@@ -5,6 +5,7 @@ import 'package:scribe/utils/constants.dart';
 import 'package:scribe/view/pages/sign_in_page.dart';
 import 'package:scribe/view/pages/sign_up_page.dart';
 import 'package:scribe/view/widgets/my_buttons.dart';
+import 'package:flutter/services.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
@@ -42,6 +43,7 @@ class SplashPage extends StatelessWidget {
                         padding: EdgeInsets.only(top: 5, bottom: 5),
                         width: screenWidth,
                         onPressed: () {
+                          HapticFeedback.mediumImpact();
                           Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
                               builder: (context) => LoginPage(),
@@ -58,6 +60,7 @@ class SplashPage extends StatelessWidget {
                         padding: EdgeInsets.only(top: 5, bottom: 5),
                         width: screenWidth,
                         onPressed: () {
+                          HapticFeedback.mediumImpact();
                           Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
                                 builder: (context) => SignUpPage()),

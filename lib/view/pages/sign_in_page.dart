@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:scribe/utils/constants.dart';
 import 'package:scribe/view/pages/home_page.dart';
 import 'package:scribe/view/pages/sign_up_page.dart';
@@ -54,7 +55,9 @@ class _LoginPageState extends State<LoginPage> {
                 MyButtons(
                   buttonColor: Pallete.secondaryColor,
                   onPressed: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomePage()));
+                    HapticFeedback.mediumImpact();
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => HomePage()));
                   },
                   name: "Sign in",
                   width: screenWidth,
@@ -70,6 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                       Text("Don't have an account? "),
                       TextButton(
                         onPressed: () {
+                          HapticFeedback.mediumImpact();
                           Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
                                   builder: (context) => SignUpPage()));
