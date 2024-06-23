@@ -23,7 +23,7 @@ class _NewNotePageState extends State<NewNotePage> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(CupertinoIcons.back),
+          icon: Icon(Icons.close),
         ),
         title: Text("New note"),
         centerTitle: true,

@@ -21,7 +21,7 @@ class _EditNotePageState extends State<EditNotePage> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(CupertinoIcons.back),
+          icon: Icon(Icons.close),
         ),
         title: Text("Edit note"),
         centerTitle: true,

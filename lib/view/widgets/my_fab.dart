@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:animations/animations.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scribe/utils/constants.dart';
 import 'package:scribe/view/pages/new_note_page.dart';
@@ -16,7 +15,7 @@ class MyFloatingButton extends StatelessWidget {
         openElevation: 0,
         openColor: Pallete.backgroundColor,
         closedColor: Colors.transparent,
-        transitionDuration: const Duration(seconds: 1),
+        transitionDuration: const Duration(milliseconds: 500),
         openBuilder: (context, action) => const NewNotePage(),
         closedBuilder: (context, action) => Container(
               height: 70,

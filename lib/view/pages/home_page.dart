@@ -6,7 +6,6 @@ import 'package:emerge_alert_dialog/emerge_alert_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:scribe/utils/constants.dart';
 import 'package:scribe/view/pages/edit_note_page.dart';
-import 'package:scribe/view/pages/new_note_page.dart';
 import 'package:scribe/view/widgets/my_drawer.dart';
 import 'package:scribe/view/widgets/my_fab.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -35,62 +34,69 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
       ),
       floatingActionButton: MyFloatingButton(),
-      body: AnimationLimiter(
-        child: MasonryGridView.builder(
-            itemCount: 8,
-            gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2),
-            itemBuilder: (builder, ctx) {
-              return AnimationConfiguration.staggeredGrid(
-                position: ctx,
-                duration: Duration(seconds: 1),
-                columnCount: 2,
-                child: ScaleAnimation(
-                  child: FadeInAnimation(
-                    child: Padding(
-                      padding:
-                          const EdgeInsets.only(top: 8, left: 6, right: 6, bottom: 6),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(
-                              MaterialPageRoute(builder: (context) => EditNotePage()));
-                        },
-                        onLongPress: () {
-                          _showMyDialog(context);
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Pallete.tertiaryColors,
-                            border: Border.all(color: Pallete.borderColor),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  'Note title',
-                                  style: TextStyle(fontSize: 20),
+      body: RefreshIndicator(
+        backgroundColor: Pallete.tertiaryColors,
+        color: Pallete.secondaryColor,
+        onRefresh: ()async{
+          await Future.delayed(Duration(milliseconds: 1500));
+        },
+        child: AnimationLimiter(
+          child: MasonryGridView.builder(
+              itemCount: 8,
+              gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2),
+              itemBuilder: (builder, ctx) {
+                return AnimationConfiguration.staggeredGrid(
+                  position: ctx,
+                  duration: Duration(milliseconds: 500),
+                  columnCount: 2,
+                  child: ScaleAnimation(
+                    child: FadeInAnimation(
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.only(top: 8, left: 6, right: 6, bottom: 6),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context) => EditNotePage()));
+                          },
+                          onLongPress: () {
+                            _showMyDialog(context);
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Pallete.tertiaryColors,
+                              border: Border.all(color: Pallete.borderColor),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    'Note title',
+                                    style: TextStyle(fontSize: 20),
+                                  ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  "dfjhkdaf asdfjaksldf jaksldjflkas dflkasjdflkasj dfklasdjfkl asdfjkasd flkasdfjaksd fjaksdfkalsdf klasdjflkasdflkasdfjaskdf jlaksdjf sdkjfhskd sdfsakldfjasd fasdfjaskdf sdklkkkdkdk kljdfhkjlsdhfjkasdhflkjasdhfkjashdfkjashdfkjashdfkjashdfkjashdfkjashdfkjashdfkjashdfkjashdfkjasdhfkljashdfkjasdhf asdfhalskd faksdf hamsdjhfkja sdfhkasj dfhkasjdfh kasjdfhkjasd fkasjldfhlwf aksjldfh vkjs hskdjfh kjasdfhjkasd sdkj",
-                                  maxLines: 20,
-                                ),
-                              )
-                            ],
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "dfjhkdaf asdfjaksldf jaksldjflkas dflkasjdflkasj dfklasdjfkl asdfjkasd flkasdfjaksd fjaksdfkalsdf klasdjflkasdflkasdfjaskdf jlaksdjf sdkjfhskd sdfsakldfjasd fasdfjaskdf sdklkkkdkdk kljdfhkjlsdhfjkasdhflkjasdhfkjashdfkjashdfkjashdfkjashdfkjashdfkjashdfkjashdfkjashdfkjashdfkjasdhfkljashdfkjasdhf asdfhalskd faksdf hamsdjhfkja sdfhkasj dfhkasjdfh kasjdfhkjasd fkasjldfhlwf aksjldfh vkjs hskdjfh kjasdfhjkasd sdkj",
+                                    maxLines: 20,
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              );
-            }),
+                );
+              }),
+        ),
       ),
     );
   }
