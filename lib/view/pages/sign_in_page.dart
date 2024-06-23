@@ -7,7 +7,6 @@ import 'package:page_transition/page_transition.dart';
 import 'package:scribe/utils/constants.dart';
 import 'package:scribe/view/pages/home_page.dart';
 import 'package:scribe/view/pages/sign_up_page.dart';
-import 'package:scribe/view/widgets/my_buttons.dart';
 import 'package:scribe/view/widgets/my_textfields.dart';
 
 class LoginPage extends StatefulWidget {

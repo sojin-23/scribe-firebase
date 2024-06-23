@@ -4,13 +4,14 @@ import 'dart:ui';
 
 import 'package:emerge_alert_dialog/emerge_alert_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:scribe/utils/constants.dart';
 import 'package:scribe/view/pages/edit_note_page.dart';
 import 'package:scribe/view/widgets/my_drawer.dart';
 import 'package:scribe/view/widgets/my_fab.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -37,9 +38,7 @@ class _HomePageState extends State<HomePage> {
       body: RefreshIndicator(
         backgroundColor: Pallete.tertiaryColors,
         color: Pallete.secondaryColor,
-        onRefresh: ()async{
-          await Future.delayed(Duration(milliseconds: 1500));
-        },
+        onRefresh: _pullToRefresh,
         child: AnimationLimiter(
           child: MasonryGridView.builder(
               itemCount: 8,
@@ -53,14 +52,16 @@ class _HomePageState extends State<HomePage> {
                   child: ScaleAnimation(
                     child: FadeInAnimation(
                       child: Padding(
-                        padding:
-                            const EdgeInsets.only(top: 8, left: 6, right: 6, bottom: 6),
+                        padding: const EdgeInsets.only(
+                            top: 8, left: 6, right: 6, bottom: 6),
                         child: GestureDetector(
                           onTap: () {
-                            Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context) => EditNotePage()));
+                            HapticFeedback.mediumImpact();
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => EditNotePage()));
                           },
                           onLongPress: () {
+                            HapticFeedback.vibrate();
                             _showMyDialog(context);
                           },
                           child: Container(
@@ -140,6 +141,14 @@ class _HomePageState extends State<HomePage> {
           ),
         );
       },
+    );
+  }
+
+  Future<void> _pullToRefresh() async {
+    await Future.delayed(Duration(milliseconds: 1500));
+    Navigator.pushReplacement(
+      context,
+      PageTransition(child: const HomePage(), type: PageTransitionType.fade),
     );
   }
 }
