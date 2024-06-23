@@ -35,11 +35,10 @@ class _SplashPageState extends State<SplashPage> {
                     ),
                   ),
                   children: [
-                    Column(
+                    const Column(
                       children: [],
                     ),
-                    Column(
-                      // mainAxisAlignment: MainAxisAlignment.center,
+                    const Column(
                       children: [
                         Text(
                           "scribe",
@@ -54,7 +53,7 @@ class _SplashPageState extends State<SplashPage> {
                     Column(
                       children: [
                         MyButtons(
-                          padding: EdgeInsets.only(top: 5, bottom: 5),
+                          padding: const EdgeInsets.only(top: 5, bottom: 5),
                           width: screenWidth,
                           onPressed: () {
                             HapticFeedback.mediumImpact();
@@ -70,11 +69,11 @@ class _SplashPageState extends State<SplashPage> {
                           name: "Sign in",
                           buttonColor: Pallete.secondaryColor,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         MyButtons(
-                          padding: EdgeInsets.only(top: 5, bottom: 5),
+                          padding: const EdgeInsets.only(top: 5, bottom: 5),
                           width: screenWidth,
                           onPressed: () {
                             HapticFeedback.mediumImpact();
