@@ -39,7 +39,7 @@ class _SplashPageState extends State<SplashPage> {
                       children: [],
                     ),
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      // mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           "scribe",

@@ -1,3 +1,4 @@
+
 // ignore_for_file: prefer_const_constructors
 
 import 'dart:ui';
@@ -39,6 +40,7 @@ class MyDrawer extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
+                Navigator.pop(context);
                 _showSignOut(context);
               },
               child: Text(
@@ -75,7 +77,10 @@ class MyDrawer extends StatelessWidget {
             animationDuration: 300,
             alignment: Alignment.centerLeft,
             emergeAlertDialogOptions: EmergeAlertDialogOptions(
-                title: const Text("About us", textAlign: TextAlign.center,),
+                title: const Text(
+                  "About us",
+                  textAlign: TextAlign.center,
+                ),
                 backgroundColor: Pallete.tertiaryColors,
                 content: Text(
                     "Hello everyone! i am sojin and am a Flutter Developer who builds efficient Android and IOS Apps"),
@@ -105,9 +110,13 @@ class MyDrawer extends StatelessWidget {
             animationDuration: 300,
             alignment: Alignment.centerLeft,
             emergeAlertDialogOptions: EmergeAlertDialogOptions(
-                title: const Text("Are you sure?", ),
+                title: const Text(
+                  "Are you sure?",
+                ),
                 backgroundColor: Pallete.tertiaryColors,
-                content: Text("Are you sure to sign out?", ),
+                content: Text(
+                  "Are you sure to sign out?",
+                ),
                 actions: [
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
